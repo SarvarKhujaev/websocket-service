@@ -1,8 +1,11 @@
 package com.ssd.mvd.websocketservice.entity;
 
 import com.ssd.mvd.websocketservice.constants.Status;
+import com.ssd.mvd.websocketservice.constants.Topics;
+import com.ssd.mvd.websocketservice.inspectors.LogInspector;
+import com.ssd.mvd.websocketservice.interfaces.ObjectCommonMethods;
 
-public final class SosNotificationForAndroid {
+public final class SosNotificationForAndroid extends LogInspector implements ObjectCommonMethods {
     public Status getStatus() {
         return this.status;
     }
@@ -27,4 +30,19 @@ public final class SosNotificationForAndroid {
 
     private String patrulPassportSeries;
     private String surnameNameFatherName; // Ф.И.О
+
+    @Override
+    public String getTopicName() {
+        return Topics.SOS_TOPIC_FOR_ANDROID_NOTIFICATION.getName();
+    }
+
+    @Override
+    public void printMessage() {
+        super.logging(
+                "Sos was sent to patrul with passport: "
+                        + this.getPatrulPassportSeries()
+                        + " at: " + super.newDate()
+                        + " with status: " + this.getStatus()
+        );
+    }
 }

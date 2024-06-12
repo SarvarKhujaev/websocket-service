@@ -1,12 +1,15 @@
 package com.ssd.mvd.websocketservice.entity.entityForPapilon;
 
 import com.ssd.mvd.websocketservice.entity.entityForPapilon.modelForGai.*;
+import com.ssd.mvd.websocketservice.interfaces.ObjectCommonMethods;
 import com.ssd.mvd.websocketservice.constants.ErrorResponse;
+import com.ssd.mvd.websocketservice.inspectors.LogInspector;
+import com.ssd.mvd.websocketservice.constants.Topics;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.List;
 
-public final class CarTotalData {
+public final class CarTotalData extends LogInspector implements ObjectCommonMethods {
     private String gosNumber;
     private String cameraImage; // image which was made by camera
 
@@ -31,4 +34,14 @@ public final class CarTotalData {
     private List< ReportForCard > reportForCards;
 
     private ErrorResponse errorResponse;
+
+    @Override
+    public String getTopicName() {
+        return Topics.CAR_TOTAL_DATA.getName();
+    }
+
+    @Override
+    public void printMessage() {
+        super.logging( this.getClass().getName() + " : " + this.gosNumber + " was sent at: " + super.newDate() );
+    }
 }

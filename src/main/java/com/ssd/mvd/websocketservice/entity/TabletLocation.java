@@ -2,13 +2,17 @@ package com.ssd.mvd.websocketservice.entity;
 
 import java.util.UUID;
 
-public final class TabletLocation {
-    public UUID getPatrulUUID() {
-        return this.patrulUUID;
-    }
+import com.ssd.mvd.websocketservice.constants.Topics;
+import com.ssd.mvd.websocketservice.inspectors.LogInspector;
+import com.ssd.mvd.websocketservice.interfaces.ObjectCommonMethods;
 
+public final class TabletLocation extends LogInspector implements ObjectCommonMethods {
     public long getDate() {
         return this.date;
+    }
+
+    public UUID getPatrulUUID() {
+        return this.patrulUUID;
     }
 
     // all Patrul params
@@ -22,4 +26,19 @@ public final class TabletLocation {
     private long date;
     private int speed; // скоросmь передвижения патрульного
     private int batteryLevel;
+
+    @Override
+    public String getTopicName() {
+        return Topics.TABLETS_GPS_DATA.getName();
+    }
+
+    @Override
+    public void printMessage() {
+        super.logging(
+                "Tablet Location from: "
+                        + this.getPatrulUUID()
+                        + " at: "
+                        + super.newDate( this.getDate() )
+        );
+    }
 }

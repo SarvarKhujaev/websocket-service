@@ -6,6 +6,7 @@ import com.ssd.mvd.websocketservice.interfaces.ServiceCommonMethods;
 import com.ssd.mvd.websocketservice.websocket.MessageSendingService;
 import com.ssd.mvd.websocketservice.WebSocketServiceApplication;
 import com.ssd.mvd.websocketservice.constants.Errors;
+import com.ssd.mvd.websocketservice.constants.Topics;
 import com.ssd.mvd.websocketservice.entity.*;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
@@ -199,7 +200,10 @@ public final class KafkaDataControl extends CollectionsInspector implements Serv
 
         kStreamForTupleCarLocation
                 .mapValues( value -> this.gson.fromJson( value, Position.class ) )
-                .mapValues( position -> this.messageSendingService.sendMessage( position, "tupleOfCarLocationTopic" ) );
+                .mapValues( position -> this.messageSendingService.sendMessage(
+                        position, Topics.TUPLE_OF_CAR_LOCATION_TOPIC.getName()
+                    )
+                );
 
         final KStream< String, String > newTupleOfCarTopic = this.builder.stream(
                 this.NEW_TUPLE_OF_CAR_TOPIC, Consumed.with( Serdes.String(), Serdes.String() )
@@ -217,13 +221,14 @@ public final class KafkaDataControl extends CollectionsInspector implements Serv
                 .mapValues( value -> this.gson.fromJson( value, SearchingPersonRedis.class ) )
                 .mapValues( searchingPersonRedis -> this.messageSendingService.sendMessage( searchingPersonRedis ) );
 
-        final KStream< String, String > kStream = this.builder.stream( this.WEBSOCKET_SERVICE_TOPIC_FOR_ONLINE,
+        final KStream< String, String > kStream = this.builder.stream(
+                this.WEBSOCKET_SERVICE_TOPIC_FOR_ONLINE,
                 Consumed.with( Serdes.String(), Serdes.String() )
         );
 
         kStream
                 .mapValues( value -> this.gson.fromJson( value, Position.class ) )
-                .mapValues( position -> this.messageSendingService.sendMessage( position, "webSocketServiceTopicForOnline" ) );
+                .mapValues( position -> this.messageSendingService.sendMessage( position, Topics.WEBSOCKET_SERVICE_TOPIC_FOR_ONLINE.getName() ) );
 
         final KStream< String, String > kStreamForCar = this.builder.stream(
                 this.REDIS_CAR, Consumed.with( Serdes.String(), Serdes.String() )

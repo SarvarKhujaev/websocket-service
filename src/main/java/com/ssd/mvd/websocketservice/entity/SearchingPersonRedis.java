@@ -1,9 +1,13 @@
 package com.ssd.mvd.websocketservice.entity;
 
+import com.ssd.mvd.websocketservice.interfaces.ObjectCommonMethods;
+import com.ssd.mvd.websocketservice.inspectors.LogInspector;
+import com.ssd.mvd.websocketservice.constants.Topics;
+
 import java.util.Date;
 import java.util.UUID;
 
-public final class SearchingPersonRedis {
+public final class SearchingPersonRedis extends LogInspector implements ObjectCommonMethods {
     public UUID getId() {
         return this.id;
     }
@@ -39,4 +43,14 @@ public final class SearchingPersonRedis {
     private String description;
     private String countryCode;
     private String documentNumber;
+
+    @Override
+    public String getTopicName() {
+        return Topics.PERSON_REDIS.getName();
+    }
+
+    @Override
+    public void printMessage() {
+        super.logging( "Got SearchingCarRedis: " + this.getId() );
+    }
 }

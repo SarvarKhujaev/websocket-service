@@ -3,6 +3,9 @@ package com.ssd.mvd.websocketservice.websocket;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.ssd.mvd.websocketservice.constants.Topics;
+import com.ssd.mvd.websocketservice.inspectors.CollectionsInspector;
+
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.converter.MessageConverter;
@@ -15,27 +18,17 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 @Configuration
 @EnableWebSocketMessageBroker
-public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+public class WebSocketConfig extends CollectionsInspector implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(
             final MessageBrokerRegistry config
     ) {
-        config.enableSimpleBroker(
-                "/redisCar",
-                "/sos_topic",
-                "/personRedis",
-                "/newCarTopic",
-                "/notification",
-                "/car_total_data",
-                "/tablets_gps_data",
-                "/newTupleOfCarTopic",
-                "/tupleOfCarLocationTopic",
-                "/external_tablets_gps_data",
-                "/webSocketServiceTopicForOnline",
-                "/SOS_TOPIC_FOR_ANDROID_NOTIFICATION"
+        super.analyze(
+                super.convertArrayToList( Topics.values() ),
+                topics -> config.enableSimpleBroker( topics.getName() )
         );
 
-        config.setApplicationDestinationPrefixes("/app");
+        config.setApplicationDestinationPrefixes( "/app" );
     }
 
     @Override

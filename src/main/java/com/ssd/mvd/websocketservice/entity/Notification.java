@@ -1,12 +1,15 @@
 package com.ssd.mvd.websocketservice.entity;
 
+import com.ssd.mvd.websocketservice.interfaces.ObjectCommonMethods;
+import com.ssd.mvd.websocketservice.inspectors.LogInspector;
 import com.ssd.mvd.websocketservice.constants.TaskTypes;
 import com.ssd.mvd.websocketservice.constants.Status;
+import com.ssd.mvd.websocketservice.constants.Topics;
 
 import java.util.Date;
 import java.util.UUID;
 
-public final class Notification {
+public final class Notification extends LogInspector implements ObjectCommonMethods {
     public String getType() {
         return this.type;
     }
@@ -57,4 +60,18 @@ public final class Notification {
     private boolean wasRead;
     private TaskTypes taskTypes;
     private Date notificationWasCreated; // the date when this current notification was created
+
+    @Override
+    public String getTopicName() {
+        if ( this.getStatus().isAttached() ) {
+            this.changeTitle();
+        }
+
+        return Topics.NOTIFICATION.getName() + this.getPassportSeries();
+    }
+
+    @Override
+    public void printMessage() {
+        super.logging( "Notification: " + this.getStatus() ); // sending to front
+    }
 }

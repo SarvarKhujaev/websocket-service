@@ -2,6 +2,8 @@ package com.ssd.mvd.websocketservice.inspectors;
 
 import java.util.function.Consumer;
 import java.util.Collection;
+import java.util.Arrays;
+import java.util.List;
 
 public class CollectionsInspector extends LogInspector {
     protected CollectionsInspector() {}
@@ -14,5 +16,11 @@ public class CollectionsInspector extends LogInspector {
             final Consumer<T> someConsumer
     ) {
         someList.forEach( someConsumer );
+    }
+
+    protected final synchronized <T> List<T> convertArrayToList (
+            final T[] objects
+    ) {
+        return Arrays.asList( objects );
     }
 }
