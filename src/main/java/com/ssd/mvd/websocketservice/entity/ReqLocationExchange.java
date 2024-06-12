@@ -4,14 +4,22 @@ import com.ssd.mvd.websocketservice.constants.TaskTypes;
 import com.ssd.mvd.websocketservice.constants.Status;
 import java.util.UUID;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-public class ReqLocationExchange {
-    // all Patrul params
+public final class ReqLocationExchange {
+    public long getRegionId() {
+        return regionId;
+    }
+
+    public long getMahallaId() {
+        return mahallaId;
+    }
+
+    public long getDistrictId() {
+        return districtId;
+    }
+
     private Status status;
     private UUID patrulUUID;
-    private Boolean sosStatus; // показывает послал ли патрульный сос сигнал
+    private boolean sosStatus; // показывает послал ли патрульный сос сигнал
     private TaskTypes taskTypes;
 
     private String card;
@@ -21,18 +29,18 @@ public class ReqLocationExchange {
     private String policeType;
     private String patrulPassportSeries;
 
-    private Double latitudeOfTask;
-    private Double longitudeOfTask;
+    private double latitudeOfTask;
+    private double longitudeOfTask;
 
-    private Long regionId;
-    private Long mahallaId;
-    private Long districtId; // choosing from dictionary
+    private long regionId;
+    private long mahallaId;
+    private long districtId; // choosing from dictionary
 
     // original values from each Tablet
-    private Double longitude;
-    private Double latitude;
+    private double longitude;
+    private double latitude;
 
-    private Long date;
-    private Integer speed; // скорось передвижения патрулього
-    private Integer batteryLevel;
+    private long date;
+    private int speed; // скорось передвижения патрулього
+    private int batteryLevel;
 }

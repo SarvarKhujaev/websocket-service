@@ -2,10 +2,7 @@ package com.ssd.mvd.websocketservice.entity.entityForPapilon;
 
 import com.ssd.mvd.websocketservice.constants.ErrorResponse;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-public class Pinpp {
+public final class Pinpp {
     private String Data;
     private String Name;
     private String Pinpp;

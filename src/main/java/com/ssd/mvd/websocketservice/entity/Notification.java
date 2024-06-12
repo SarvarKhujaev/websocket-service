@@ -6,12 +6,40 @@ import com.ssd.mvd.websocketservice.constants.Status;
 import java.util.Date;
 import java.util.UUID;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
 public final class Notification {
+    public String getType() {
+        return this.type;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public void changeTitle() {
+        this.title = switch ( TaskTypes.valueOf( this.getType() ) ) {
+            case CARD_102 -> "Sizga 102 tizimidan yangi vazifa biriktirildi";
+            case FIND_FACE_CAR -> "Sizga qidiruvdagi avtomobil bo'yicha vazifa biriktirildi";
+            case FIND_FACE_PERSON -> "Sizga qidiruvdagi shaxs bo'yicha vazifa biriktirildi";
+            case FIND_FACE_EVENT_BODY, FIND_FACE_EVENT_FACE -> "Yangi e'lon xabari keldi";
+            default -> this.getTitle();
+        };
+    }
+
+    public UUID getUuid() {
+        return this.uuid;
+    }
+
+    public Status getStatus() {
+        return this.status;
+    }
+
+    public String getPassportSeries() {
+        return this.passportSeries;
+    }
+
     private String id; // id of any task
     private String type; // might be from 102 or Camera
+
     private String title; // description of Patrul action
     private String address;
     private String carNumber;
@@ -19,14 +47,14 @@ public final class Notification {
     private String nsfOfPatrul;
     private String passportSeries;
 
-    private Double latitudeOfTask;
-    private Double longitudeOfTask;
+    private double latitudeOfTask;
+    private double longitudeOfTask;
 
     private UUID uuid;
     private Status status;
     private Status taskStatus;
 
-    private Boolean wasRead;
+    private boolean wasRead;
     private TaskTypes taskTypes;
     private Date notificationWasCreated; // the date when this current notification was created
 }

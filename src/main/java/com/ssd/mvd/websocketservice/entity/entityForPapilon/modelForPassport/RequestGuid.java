@@ -1,4 +1,3 @@
 package com.ssd.mvd.websocketservice.entity.entityForPapilon.modelForPassport;
 
-@lombok.Data
-public class RequestGuid {}
+public final class RequestGuid {}

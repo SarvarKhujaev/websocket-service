@@ -2,7 +2,6 @@ package com.ssd.mvd.websocketservice.websocket;
 
 import com.ssd.mvd.websocketservice.entity.entityForPapilon.CarTotalData;
 import com.ssd.mvd.websocketservice.inspectors.WebFluxInspector;
-import com.ssd.mvd.websocketservice.constants.TaskTypes;
 import com.ssd.mvd.websocketservice.constants.Status;
 import com.ssd.mvd.websocketservice.entity.*;
 
@@ -58,15 +57,10 @@ public final class MessageSendingService extends WebFluxInspector {
 
                     if ( notification.getStatus().compareTo( Status.ATTACHED ) == 0 ) {
                         super.logging( "Sending notification to: /notification/" + notification.getPassportSeries() );
-                        notification.setTitle( switch ( TaskTypes.valueOf( notification.getType() ) ) {
-                            case CARD_102 -> "Sizga 102 tizimidan yangi vazifa biriktirildi";
-                            case FIND_FACE_CAR -> "Sizga qidiruvdagi avtomobil bo'yicha vazifa biriktirildi";
-                            case FIND_FACE_PERSON -> "Sizga qidiruvdagi shaxs bo'yicha vazifa biriktirildi";
-                            case FIND_FACE_EVENT_BODY, FIND_FACE_EVENT_FACE -> "Yangi e'lon xabari keldi";
-                            default -> notification.getTitle();
-                        } );
+                        notification.changeTitle();
 
                         super.logging( "Title: " + notification.getTitle() );
+
                         // sending to Android
                         this.getSimpMessagingTemplate().convertAndSend( "/notification/" + notification.getPassportSeries(), notification );
                     }

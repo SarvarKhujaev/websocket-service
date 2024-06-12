@@ -1,20 +1,12 @@
 package com.ssd.mvd.websocketservice.entity.entityForPapilon;
 
-import java.util.List;
-import lombok.extern.jackson.Jacksonized;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import com.ssd.mvd.websocketservice.constants.ErrorResponse;
 import com.ssd.mvd.websocketservice.entity.entityForPapilon.modelForGai.*;
+import com.ssd.mvd.websocketservice.constants.ErrorResponse;
 
-@lombok.Data
-@Jacksonized
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@JsonIgnoreProperties ( ignoreUnknown = true )
-public class CarTotalData {
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.List;
+
+public final class CarTotalData {
     private String gosNumber;
     private String cameraImage; // image which was made by camera
 

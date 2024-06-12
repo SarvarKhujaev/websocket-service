@@ -1,14 +1,12 @@
 package com.ssd.mvd.websocketservice.entity.entityForPapilon;
 
-import java.util.List;
-import com.ssd.mvd.websocketservice.constants.ErrorResponse;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.ssd.mvd.websocketservice.entity.entityForPapilon.modelForAddress.ModelForAddress;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.ssd.mvd.websocketservice.constants.ErrorResponse;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-public class PsychologyCard {
+import java.util.List;
+
+public final class PsychologyCard {
     @JsonDeserialize
     private Pinpp pinpp;
     private String personImage; // the image of the person

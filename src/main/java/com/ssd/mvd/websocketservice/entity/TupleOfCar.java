@@ -2,10 +2,7 @@ package com.ssd.mvd.websocketservice.entity;
 
 import java.util.UUID;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-public class TupleOfCar {
+public final class TupleOfCar {
     private UUID uuid;
     private UUID uuidOfEscort; // UUID of the Escort which this car is linked to
     private UUID uuidOfPatrul; // UUID of the Escort which this car is linked to
@@ -16,7 +13,7 @@ public class TupleOfCar {
     private String nsfOfPatrul;
     private String simCardNumber;
 
-    private Double latitude;
-    private Double longitude;
-    private Double averageFuelConsumption;
+    private double latitude;
+    private double longitude;
+    private double averageFuelConsumption;
 }

@@ -1,10 +1,7 @@
 package com.ssd.mvd.websocketservice.entity.entityForPapilon;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-public class Violation {
-    private Long protocol_id;
+public final class Violation {
+    private long protocol_id;
 
     private String pinpp;
     private String decision;

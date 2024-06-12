@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.ssd.mvd.websocketservice.database.KafkaDataControl;
+import com.ssd.mvd.websocketservice.kafka.KafkaDataControl;
 
 @SpringBootApplication
 public class WebSocketServiceApplication {

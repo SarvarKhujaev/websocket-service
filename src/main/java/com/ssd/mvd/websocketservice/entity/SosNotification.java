@@ -3,10 +3,16 @@ package com.ssd.mvd.websocketservice.entity;
 import com.ssd.mvd.websocketservice.constants.Status;
 import java.util.UUID;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-public class SosNotification {
+public final class SosNotification {
     private UUID patrulUUID;
+
     private Status status;
+
+    public UUID getPatrulUUID() {
+        return this.patrulUUID;
+    }
+
+    public Status getStatus() {
+        return this.status;
+    }
 }

@@ -1,11 +1,8 @@
 package com.ssd.mvd.websocketservice.entity.entityForPapilon;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-public class PapilonData {
-    private Integer rank;
-    private Double score;
+public final class PapilonData {
+    private int rank;
+    private double score;
 
     private String name;
     private String photo;

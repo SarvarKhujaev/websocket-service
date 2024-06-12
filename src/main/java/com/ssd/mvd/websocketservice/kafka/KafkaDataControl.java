@@ -1,4 +1,4 @@
-package com.ssd.mvd.websocketservice.database;
+package com.ssd.mvd.websocketservice.kafka;
 
 import com.ssd.mvd.websocketservice.entity.entityForPapilon.CarTotalData;
 import com.ssd.mvd.websocketservice.inspectors.CollectionsInspector;

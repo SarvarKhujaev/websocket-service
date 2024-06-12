@@ -1,14 +1,22 @@
 package com.ssd.mvd.websocketservice.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ssd.mvd.websocketservice.constants.Status;
-
 import java.util.Date;
 import java.util.UUID;
 
-@lombok.Data
-@JsonIgnoreProperties( ignoreUnknown = true )
 public class Position {
+    public long getRegionId() {
+        return this.regionId;
+    }
+
+    public long getMahallaId() {
+        return this.mahallaId;
+    }
+
+    public long getDistrictId() {
+        return this.districtId;
+    }
+
     // only for Car
     private String icon; // иконка патрульного выбирается исходя из типа патрульного
     private String icon2; // иконка патрульного выбирается исходя из типа патрульного
@@ -23,18 +31,18 @@ public class Position {
     private Status status;
     private UUID patrulUUID;
 
-    private Double latitudeOfTask;
-    private Double longitudeOfTask;
+    private double latitudeOfTask;
+    private double longitudeOfTask;
 
-    private Long regionId;
-    private Long mahallaId;
-    private Long districtId; // choosing from dictionary
+    private long regionId;
+    private long mahallaId;
+    private long districtId; // choosing from dictionary
 
     // Tracker data
     private String deviceId;
     private Date deviceTime;
 
-    private Double speed; // value in knots
-    private Double latitude;
-    private Double longitude;
+    private double speed; // value in knots
+    private double latitude;
+    private double longitude;
 }

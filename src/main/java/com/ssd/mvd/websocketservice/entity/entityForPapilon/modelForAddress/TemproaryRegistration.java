@@ -1,9 +1,6 @@
 package com.ssd.mvd.websocketservice.entity.entityForPapilon.modelForAddress;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-public class TemproaryRegistration {
+public final class TemproaryRegistration {
     private String pAddress;
     private String pCadastre;
     private String pValidDate;

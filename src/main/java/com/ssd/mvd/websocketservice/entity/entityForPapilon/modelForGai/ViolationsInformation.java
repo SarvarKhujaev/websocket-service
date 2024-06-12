@@ -1,11 +1,8 @@
 package com.ssd.mvd.websocketservice.entity.entityForPapilon.modelForGai;
 
-@lombok.Data
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-public class ViolationsInformation {
-    private Integer decreeStatus;
-    private Integer amount;
+public final class ViolationsInformation {
+    private int decreeStatus;
+    private int amount;
 
     private String decreeSerialNumber;
     private String violation;

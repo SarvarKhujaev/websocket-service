@@ -1,33 +1,29 @@
 package com.ssd.mvd.websocketservice.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.extern.jackson.Jacksonized;
-
 import java.util.Date;
 import java.util.UUID;
 
-@lombok.Data
-@Jacksonized
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@JsonIgnoreProperties( ignoreUnknown = true )
-public class SearchingPersonRedis {
+public final class SearchingPersonRedis {
+    public UUID getId() {
+        return this.id;
+    }
+
     private UUID id;
 
-    private Boolean beard;
-    private Boolean state;
-    private Boolean gender;
-    private Boolean isForeigner; //chet ellik 1 xa 0 yoq
+    private boolean beard;
+    private boolean state;
+    private boolean gender;
+    private boolean isForeigner;
 
     private Date createdDate;
     private Date expirationDate;
     private Date dateOfRegistration;
 
-    private Long toAge;
-    private Long fromAge;
-    private Long regionId;
-    private Long orginalAge;
-    private Long daysWithoutRegistration;
+    private long toAge;
+    private long fromAge;
+    private long regionId;
+    private long orginalAge;
+    private long daysWithoutRegistration;
 
     private String file;
     private String name;
@@ -36,7 +32,7 @@ public class SearchingPersonRedis {
     private String kppName;
     private String purpose;
     private String policeId;
-    private String stateType;////QIDIRUVDA ANIQLANGAN
+    private String stateType;
     private String routeType;
     private String visaNumber;
     private String definition;
