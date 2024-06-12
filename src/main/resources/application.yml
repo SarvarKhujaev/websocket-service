@@ -1,0 +1,25 @@
+server:
+    port: ${SERVER_PORT} # all trackers are going to send its data by its  port
+    address: ${SERVER_ADDR}
+
+variables:
+    KAFKA_VARIABLES:
+        KAFKA_BROKER: ${KAFKA_BROKER:localhost:9092}
+        KAFKA_ACKS_CONFIG: ${KAFKA_ACKS_CONFIG:1}
+        GROUP_ID_FOR_KAFKA: ${GROUP_ID_FOR_KAFKA:SSD.GPS.TABLETS_DEV_TEST}
+
+        KAFKA_TOPICS:
+            REDIS_CAR: ${REDIS_CAR:api_qidiruv_elon_berilganlar_car_0.0.1}
+            REDIS_PERSON: ${REDIS_PERSON:api_qidiruv_elon_berilganlar_person_0.0.1}
+
+            SOS_TOPIC: ${SOS_TOPIC:SOS_TOPIC_DEV}
+            NOTIFICATION: ${NOTIFICATION:notification_dev}
+            TABLETS_GPS_DATA: ${TABLETS_GPS_DATA:tablets_gps_data}
+            SOS_TOPIC_FOR_ANDROID_NOTIFICATION: ${SOS_TOPIC_FOR_ANDROID_NOTIFICATION:SOS_TOPIC_FOR_ANDROID_NOTIFICATION_DEV}
+
+            NEW_CAR_TOPIC: ${NEW_CAR_TOPIC:NEW_CAR_TOPIC_DEV}
+            CAR_TOTAL_DATA: ${CAR_TOTAL_DATA:car_total_data}
+            NEW_TUPLE_OF_CAR_TOPIC: ${NEW_TUPLE_OF_CAR_TOPIC:newTupleOfCarTopicDev}
+            TUPLE_OF_CAR_LOCATION_TOPIC: ${TUPLE_OF_CAR_LOCATION_TOPIC:TUPLE_OF_CAR_LOCATION_TOPIC_DEV}
+            WEBSOCKET_SERVICE_TOPIC_FOR_ONLINE: ${WEBSOCKET_SERVICE_TOPIC_FOR_ONLINE:webSocketServiceTopicForOnlineDev}
+            EXTERNAL_TABLETS_LOCATIONS : ${EXTERNAL_TABLETS_LOCATIONS:EXTERNAL_TABLETS_LOCATIONS_DEV}

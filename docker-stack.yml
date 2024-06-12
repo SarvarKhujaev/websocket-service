@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+    app:
+        image: ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest
+        networks:
+            - proxy_network
+        ports:
+            - ${SERVER_PORT}:${SERVER_PORT}
+
+        environment:
+            SERVER_PORT: ${SERVER_PORT}
+            SERVER_ADDR: ${SERVER_ADDR}
+
+            KAFKA_BROKER: ${KAFKA_BROKER}
+            GROUP_ID_FOR_KAFKA: ${GROUP_ID_FOR_KAFKA}
+
+            NEW_CAR_TOPIC: ${NEW_CAR_TOPIC}
+            CAR_TOTAL_DATA: ${CAR_TOTAL_DATA}
+            NEW_TUPLE_OF_CAR_TOPIC: ${NEW_TUPLE_OF_CAR_TOPIC}
+            TUPLE_OF_CAR_LOCATION_TOPIC: ${TUPLE_OF_CAR_LOCATION_TOPIC}
+            WEBSOCKET_SERVICE_TOPIC_FOR_ONLINE: ${WEBSOCKET_SERVICE_TOPIC_FOR_ONLINE}
+            SOS_TOPIC_FOR_ANDROID_NOTIFICATION: ${SOS_TOPIC_FOR_ANDROID_NOTIFICATION}
+
+            SOS_TOPIC : ${SOS_TOPIC}
+            REDIS_CAR : ${REDIS_CAR}
+            NOTIFICATION: ${NOTIFICATION}
+            REDIS_PERSON : ${REDIS_PERSON}
+            TABLETS_GPS_DATA: ${TABLETS_GPS_DATA}
+            EXTERNAL_TABLETS_LOCATIONS : ${EXTERNAL_TABLETS_LOCATIONS}
+
+        deploy:
+            replicas: ${REPLICAS}
+            placement:
+                constraints: [ node.labels.mgmt != true ]
+
+networks:
+    proxy_network:
+        external: true
